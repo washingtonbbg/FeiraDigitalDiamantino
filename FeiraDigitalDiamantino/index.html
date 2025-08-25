@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo – AgroFamiliar</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#16a34a" />
+</head>
+<body>
+  <header class="topbar">
+    <h1 id="brandTitle">AgroFamiliar</h1>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Buscar (ex.: alface, ovos)" aria-label="Buscar produtos"/>
+      <select id="unitFilter" aria-label="Filtrar por unidade">
+        <option value="">Unidade (todas)</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-label="Lista de produtos">
+      <div id="productGrid" class="grid"></div>
+    </section>
+    <aside class="cart" aria-label="Carrinho de compras">
+      <h2>Seu pedido</h2>
+      <div id="cartItems" class="cart-items" role="list"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          Total: <strong id="cartTotal">R$ 0,00</strong>
+        </div>
+        <label class="field">
+          <span>Seu nome</span>
+          <input id="buyerName" type="text" placeholder="Ex.: Ana Silva"/>
+        </label>
+        <label class="field">
+          <span>Ponto de entrega</span>
+          <select id="pickupPoint">
+            <option value="">Selecione...</option>
+          </select>
+        </label>
+        <button id="whatsBtn" class="btn-primary">Fechar pelo WhatsApp</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <small><span id="brandFoot">Rede AgroFamiliar</span> • PIX: <span id="pixKey"></span></small>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Alface Crespa",
+    "unit": "maço",
+    "price": 4.5,
+    "stock": 40,
+    "photo": "https://images.unsplash.com/photo-1540421251644-5a69a5e80b62?q=80&w=600&auto=format&fit=crop"
+  },
+  {
+    "id": 2,
+    "name": "Tomate",
+    "unit": "kg",
+    "price": 8.9,
+    "stock": 25,
+    "photo": "https://images.unsplash.com/photo-1546470427-85a1096ec6a8?q=80&w=600&auto=format&fit=crop"
+  },
+  {
+    "id": 3,
+    "name": "Ovos Caipiras",
+    "unit": "dúzia",
+    "price": 16.0,
+    "stock": 30,
+    "photo": "https://images.unsplash.com/photo-1517959105821-eaf2591984ae?q=80&w=600&auto=format&fit=crop"
+  }
+]
