@@ -13,7 +13,6 @@ window.AGRO_CFG = {
   // (1) Google Sheets CSV publicado (recomendado para catálogo dinâmico)
   // PASSO: No Google Sheets → Arquivo → Publicar na Web → Selecione a aba Produtos → formato CSV
   // Cole aqui o URL gerado (termina com 'output=csv' ou 'export?format=csv&gid=...'):
-  //https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hjr9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIIpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
   csvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hir9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIlpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
   // (2) Fallback local (se csvUrl estiver vazio): carrega 'products.json' deste repositório
   fallbackUrl: "products.json"
