@@ -16,6 +16,6 @@ window.AGRO_CFG = {
   //https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hjr9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIIpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
 
   // (2) Fallback local (se csvUrl estiver vazio): carrega 'products.json' deste repositório
-  csvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hjr9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIIpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hjr9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIIpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
 
 };
