@@ -1,7 +1,7 @@
 // CONFIGURAÇÕES DO PROJETO (edite aqui)
 window.AGRO_CFG = {
   brandName: "Rede AgroFamiliar Diamantino",
-  whatsappCentral: "5565977770000",   // DDD + número sem + ou espaços
+  whatsappCentral: "5565996245361",   // DDD + número sem + ou espaços
   pixKey: "000.111.222-33 (CPF)",
   pickupPoints: [
     "Feira Municipal (Sex 17h-18h)",
