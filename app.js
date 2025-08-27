@@ -1,7 +1,16 @@
-/* App logic */
+/* App logic (corrigido v2) */
 (() => {
   const cfg = window.APP_CONFIG || {};
-  document.body.classList.toggle('theme-light', (cfg.theme || 'dark') === 'light'); // aplica a classe de tema no <body>
+
+  // aplica a classe de tema no <body> (claro/escuro) a partir do config
+  const isLightInitial = (cfg.theme || 'dark') === 'light';
+  document.body.classList.toggle('theme-light', isLightInitial);
+
+  // meta theme-color (barra do navegador no mobile)
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  const setThemeColor = (isLight) => metaTheme?.setAttribute('content', isLight ? '#ffffff' : '#111018');
+  setThemeColor(isLightInitial);
+
   const R$ = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
   const $ = sel => document.querySelector(sel);
   const $$ = sel => Array.from(document.querySelectorAll(sel));
@@ -34,28 +43,10 @@
     cartItems: $('#cartItems'),
     cartTotalModal: $('#cartTotalModal'),
     whatsHeader: $('#whatsHeader'),
-    themeToggle: document.getElementById('themeToggle'),
+    themeToggle: $('#themeToggle'),
     tplCard: $('#productCardTpl'),
     tplCart: $('#cartItemTpl'),
   };
-
-  // único listener do botão de tema (perto dos outros addEventListener)
-  const metaTheme = document.querySelector('meta[name="theme-color"]');
-  const setThemeColor = (isLight) => metaTheme?.setAttribute('content', isLight ? '#ffffff' : '#111018');
-
-  // aplica a cor inicial conforme o cfg.theme (essa linha pode ficar perto do topo, logo após aplicar a classe)
-  setThemeColor((cfg.theme || 'dark') === 'light');
-
-;
-  toast(`Tema alterado para ${isLight ? 'claro' : 'escuro'}`);
-  // Atualiza a interface conforme o novo tema
-  els.products.classList.toggle('light', isLight);
-  els.cartBar.classList.toggle('light', isLight);
-  els.toast.classList.toggle('light', isLight);
-  els.cartModal.classList.toggle('light', isLight);
-  els.whatsHeader.classList.toggle('light', isLight);
-  els.tplCard.classList.toggle('light', isLight);
-  els.tplCart.classList.toggle('light', isLight);
 
   // Init UI header from config
   els.storeName.textContent = cfg.storeName || 'Feira Digital Diamantino';
@@ -247,12 +238,22 @@
     }
   }
 
+  // Listeners
   els.search.addEventListener('input', e => { state.search = e.target.value; filterAndRender(); });
   els.openCart.addEventListener('click', () => els.cartModal.showModal());
   els.closeCart.addEventListener('click', () => els.cartModal.close());
   els.checkout.addEventListener('click', checkout);
   els.checkoutModal.addEventListener('click', checkout);
   els.whatsHeader.addEventListener('click', () => openWhats('Olá! Gostaria de tirar uma dúvida.'));
+
+  // botão de tema (único listener, protegido com optional chaining)
+  els.themeToggle?.addEventListener('click', () => {
+    cfg.theme = (cfg.theme || 'dark') === 'light' ? 'dark' : 'light';
+    const isLight = cfg.theme === 'light';
+    document.body.classList.toggle('theme-light', isLight);
+    setThemeColor(isLight);
+    toast(`Tema alterado para ${isLight ? 'claro' : 'escuro'}`);
+  });
 
   function checkout(){
     if (state.cart.size===0) return;
