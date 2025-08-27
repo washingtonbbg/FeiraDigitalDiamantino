@@ -46,18 +46,16 @@
   // aplica a cor inicial conforme o cfg.theme (essa linha pode ficar perto do topo, logo após aplicar a classe)
   setThemeColor((cfg.theme || 'dark') === 'light');
 
-  els.themeToggle?.addEventListener('click', () => {
-    // alterna o valor no config em memória
-    cfg.theme = (cfg.theme || 'dark') === 'light' ? 'dark' : 'light';
-    const isLight = cfg.theme === 'light';
-
-    // aplica classe e meta theme-color
-    document.body.classList.toggle('theme-light', isLight);
-    setThemeColor(isLight);
-
-    toast(`Tema alterado para ${isLight ? 'claro' : 'escuro'}`);
-  });
-
+;
+  toast(`Tema alterado para ${isLight ? 'claro' : 'escuro'}`);
+  // Atualiza a interface conforme o novo tema
+  els.products.classList.toggle('light', isLight);
+  els.cartBar.classList.toggle('light', isLight);
+  els.toast.classList.toggle('light', isLight);
+  els.cartModal.classList.toggle('light', isLight);
+  els.whatsHeader.classList.toggle('light', isLight);
+  els.tplCard.classList.toggle('light', isLight);
+  els.tplCart.classList.toggle('light', isLight);
 
   // Init UI header from config
   els.storeName.textContent = cfg.storeName || 'Feira Digital Diamantino';
