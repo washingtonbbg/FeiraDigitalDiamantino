@@ -2,6 +2,17 @@
 (() => {
   const cfg = window.APP_CONFIG || {};
 
+  // Lembrar o tema escolhido (salvar no navegador)
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    cfg.theme = savedTheme;
+  }
+
+  // Definir tema padrão com base na preferência do sistema
+  if (!cfg.theme) {
+  cfg.theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+
   // aplica a classe de tema no <body> (claro/escuro) a partir do config
   const isLightInitial = (cfg.theme || 'dark') === 'light';
   document.body.classList.toggle('theme-light', isLightInitial);
@@ -252,6 +263,8 @@
     const isLight = cfg.theme === 'light';
     document.body.classList.toggle('theme-light', isLight);
     setThemeColor(isLight);
+    cfg.theme = isLight ? 'light' : 'dark';
+    localStorage.setItem('theme', cfg.theme);
     toast(`Tema alterado para ${isLight ? 'claro' : 'escuro'}`);
   });
 
