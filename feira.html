@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bancas • Feira Digital Diamantino</title>
+  <meta name="theme-color" content="#111018" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="config.js"></script>
+  <script defer src="feira.js"></script>
+  <style>.grid{display:grid;gap:12px;padding:12px 16px 40px}@media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}.producer-card{display:flex;gap:12px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:10px;align-items:center}.producer-thumb{width:72px;height:72px;border-radius:14px;background:#14121d;background-size:cover;background-position:center;border:1px solid rgba(255,255,255,.06)}</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="avatar">FD</div>
+      <div>
+        <h1>Bancas da Feira</h1>
+        <div class="meta"><span class="badge open">Aberto</span> • Escolha um produtor</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a class="whats-mini" href="cadastro.html">Cadastrar produtor</a>
+      <a class="whats-mini" href="index.html">Ver catálogo padrão</a>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="search-wrap"><input id="search" type="search" placeholder="Buscar produtor por nome, cidade..." /></div>
+  </section>
+  <main id="grid" class="grid" aria-live="polite"></main>
+  <template id="producerTpl">
+    <article class="producer-card">
+      <div class="producer-thumb"></div>
+      <div class="producer-info" style="flex:1;min-width:0">
+        <h3 class="p-name" style="margin:0 0 4px"></h3>
+        <p class="p-line" style="margin:0;color:var(--muted);font-size:13px"></p>
+      </div>
+      <div class="producer-actions"><a class="primary" target="_self">Ver banca</a></div>
+    </article>
+  </template>
+  <div id="toast" class="toast hidden" role="alert"></div>
+</body>
+</html>
