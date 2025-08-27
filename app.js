@@ -39,20 +39,24 @@
     tplCart: $('#cartItemTpl'),
   };
 
-  // 👉 botão para alternar o tema claro/escuro
-els.themeToggle?.addEventListener('click', () => {
-  const newTheme = (cfg.theme || 'dark') === 'light' ? 'dark' : 'light';
-  document.body.classList.toggle('theme-light', newTheme === 'light');
-  cfg.theme = newTheme;
-
-  // (opcional) ajusta a cor da barra do navegador no mobile
+  // único listener do botão de tema (perto dos outros addEventListener)
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   const setThemeColor = (isLight) => metaTheme?.setAttribute('content', isLight ? '#ffffff' : '#111018');
-  // logo após aplicar o tema:
-  const isLight = (cfg.theme || 'dark') === 'light';
-  setThemeColor(isLight);
-  // dentro do listener:
-  setThemeColor(newTheme === 'light');
+
+  // aplica a cor inicial conforme o cfg.theme (essa linha pode ficar perto do topo, logo após aplicar a classe)
+  setThemeColor((cfg.theme || 'dark') === 'light');
+
+  els.themeToggle?.addEventListener('click', () => {
+    // alterna o valor no config em memória
+    cfg.theme = (cfg.theme || 'dark') === 'light' ? 'dark' : 'light';
+    const isLight = cfg.theme === 'light';
+
+    // aplica classe e meta theme-color
+    document.body.classList.toggle('theme-light', isLight);
+    setThemeColor(isLight);
+
+    toast(`Tema alterado para ${isLight ? 'claro' : 'escuro'}`);
+  });
 
 
   // Init UI header from config
