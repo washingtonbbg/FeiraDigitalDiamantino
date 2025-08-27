@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Produtor • Feira Digital Diamantino</title>
+  <meta name="theme-color" content="#111018" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="config.js"></script>
+  <script defer src="cadastro.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="avatar">FD</div>
+      <div>
+        <h1>Cadastro de Produtor</h1>
+        <div class="meta"><span class="badge open">Grátis</span> • Preencha e envie no WhatsApp</div>
+      </div>
+    </div>
+    <a class="whats-mini" href="feira.html">Voltar</a>
+  </header>
+  <main class="form" style="max-width:720px;margin:16px auto 80px;padding:16px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px">
+    <div class="row" style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+      <div class="field"><label for="nome">Nome da banca / produtor</label><input id="nome" placeholder="Ex.: Horta Dona Maria" /></div>
+      <div class="field"><label for="cidade">Cidade</label><input id="cidade" placeholder="Diamantino - MT" /></div>
+      <div class="field"><label for="whats">WhatsApp (55 + DDD + número)</label><input id="whats" placeholder="5565999990000" /></div>
+      <div class="field"><label for="pix">Chave Pix</label><input id="pix" placeholder="CPF, CNPJ, e-mail ou aleatória" /></div>
+      <div class="field"><label for="logo">Logo (URL opcional)</label><input id="logo" placeholder="https://..." /></div>
+      <div class="field"><label for="csv">Catálogo (Google Sheets em CSV)</label><input id="csv" placeholder="https://docs.google.com/...&output=csv" /></div>
+    </div>
+    <div class="field"><label for="tagline">Descrição curta</label><textarea id="tagline" placeholder="Ex.: Verduras fresquinhas colhidas no dia" style="min-height:96px"></textarea></div>
+    <div class="actions" style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
+      <button id="enviar" class="primary">Enviar no WhatsApp</button>
+      <a id="preview" class="whats-mini" href="#" target="_blank">Pré-visualizar banca</a>
+      <a class="whats-mini" href="feira.html">Ver lista de bancas</a>
+    </div>
+    <p style="color:var(--muted);margin-top:12px">Dica: publique sua planilha do Google em CSV (Arquivo → Publicar na Web) e cole o link aqui.</p>
+  </main>
+  <div id="toast" class="toast hidden" role="alert"></div>
+</body>
+</html>
