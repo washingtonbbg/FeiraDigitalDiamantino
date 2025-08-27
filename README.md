@@ -1,44 +1,22 @@
-# Agro MVP (CSV via Google Sheets) – 100% grátis no GitHub Pages
+# Feira Digital Diamantino — tema Napoli
 
-Este é um starter kit de catálogo + carrinho que envia o pedido **pelo WhatsApp**, sem servidor e sem custo.
+Interface mobile-first no estilo do layout anexo (escuro + destaque magenta), com:
+- busca, categorias em *chips*, cards de produto;
+- carrinho flutuante e modal;
+- checkout por WhatsApp.
 
-## Como usar (5 passos)
+## Como usar
 
-1. **Faça um fork/baixe** estes arquivos e publique no **GitHub Pages**:  
-   - Settings → Pages → Source = Deploy from a branch → `main` → `/root`.
-   - Aguarde a URL (ex.: `https://seu-usuario.github.io/agro-mvp-csv`).
-
-2. **Edite `config.js`**:
-   - `brandName`, `whatsappCentral`, `pixKey`, `pickupPoints`.
-   - Em **csvUrl**, cole o **link CSV** da sua planilha do Google:
-     - No Google Sheets → **Arquivo → Publicar na Web** → escolha a aba **Produtos** → **CSV** → **Publicar**.
-     - Copie a URL (termina com `output=csv`) e cole em `csvUrl`.
-
-   > Alternativa: se preferir, deixe `csvUrl` vazio e edite o `products.json` local.
-
-3. **Formato esperado da aba `Produtos`** (cabeçalhos):
+1) **Troque o número do WhatsApp** em `config.js` (campo `whatsappPhone`) — só números: `55` + DDD + número.
+2) **Escolha a fonte de dados** em `config.js`:
+   - `type: "csv"` + cole a URL `output=csv` da sua planilha publicada;
+   - ou `type: "json"` para usar `products.json` (padrão deste pacote).
+3) Publique no GitHub Pages:
+   ```bash
+   git add .
+   git commit -m "tema napoli + carrinho whatsapp"
+   git push
    ```
-   id | name | unit | price | stock | photo
-   ```
-   - `price` pode ter vírgula decimal (ex.: `8,90`).
-   - `unit` (ex.: `kg`, `maço`, `dúzia`).
-   - `photo` é um link de imagem pública (Drive, Imgur, Unsplash etc.).
+4) Abra `https://SEU-USUARIO.github.io/FeiraDigitalDiamantino/`.
 
-4. **Permissões**:
-   - O CSV publicado é público. Ele é **somente leitura**.
-   - Se preferir não “Publicar na web”, pode usar:  
-     `https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/export?format=csv&gid=SUA_GID`  
-     > Nesse caso, é preciso deixar o arquivo **Compartilhado com: Qualquer pessoa com o link (Leitor)**.
-
-5. **Testar no celular**:
-   - Abra a URL do GitHub Pages.
-   - Adicione à tela inicial (PWA “leve”).
-
-## Dicas
-- **Busca e filtro**: barra de busca + filtro por unidade.
-- **WhatsApp**: envia itens, total, nome do cliente, ponto de entrega e PIX.
-- **Estoque**: por simplicidade, não decrementar automaticamente (ajuste no CSV).
-
-## Próximos passos (free)
-- Registrar pedidos em uma planilha via **Google Apps Script Web App** (recebendo POST do `fetch`).  
-- Incluir **ícone/manifest** para comportamento PWA completo.
+> Se o CSV falhar, o app avisa e usa automaticamente o `products.json`.

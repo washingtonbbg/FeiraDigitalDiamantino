@@ -1,26 +1,34 @@
 [
   {
-    "id": 1,
-    "name": "Alface Crespa",
-    "unit": "maço",
-    "price": 4.5,
-    "stock": 40,
-    "photo": "https://images.unsplash.com/photo-1540421251644-5a69a5e80b62?q=80&w=600&auto=format&fit=crop"
+    "Categoria": "Hortaliças",
+    "Nome": "Alface crespa",
+    "Preço": "5,00",
+    "Unidade": "un",
+    "Descrição": "Colhida no dia",
+    "Imagem": "https://images.unsplash.com/photo-1540421251644-5a69a5e80b62?q=80&w=600&auto=format&fit=crop"
   },
   {
-    "id": 2,
-    "name": "Tomate",
-    "unit": "kg",
-    "price": 8.9,
-    "stock": 25,
-    "photo": "https://images.unsplash.com/photo-1546470427-85a1096ec6a8?q=80&w=600&auto=format&fit=crop"
+    "Categoria": "Frutas",
+    "Nome": "Banana nanica",
+    "Preço": "7,99",
+    "Unidade": "kg",
+    "Descrição": "Doce e madura",
+    "Imagem": "https://images.unsplash.com/photo-1571775303451-bfe2161edb70?q=80&w=600&auto=format&fit=crop"
   },
   {
-    "id": 3,
-    "name": "Ovos Caipiras",
-    "unit": "dúzia",
-    "price": 16.0,
-    "stock": 30,
-    "photo": "https://images.unsplash.com/photo-1517959105821-eaf2591984ae?q=80&w=600&auto=format&fit=crop"
+    "Categoria": "Processados",
+    "Nome": "Doce de leite",
+    "Preço": "18,50",
+    "Unidade": "un 400g",
+    "Descrição": "Artesanal",
+    "Imagem": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=600&auto=format&fit=crop"
+  },
+  {
+    "Categoria": "Tubérculos",
+    "Nome": "Mandioca descascada",
+    "Preço": "9,00",
+    "Unidade": "kg",
+    "Descrição": "Pronta para cozinhar",
+    "Imagem": "https://images.unsplash.com/photo-1615485737655-3d3d9e7d9d85?q=80&w=600&auto=format&fit=crop"
   }
 ]
