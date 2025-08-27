@@ -120,3 +120,33 @@ dialog::backdrop{background:rgba(0,0,0,.6);backdrop-filter: blur(2px)}
 @media(min-width:1024px){
   .product-list{grid-template-columns: repeat(3, minmax(0,1fr));}
 }
+/* ===== Tema claro ===== */
+body.theme-light{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --accent:#ff0f7b;
+  --accent-2:#7a5cff;
+  --ok:#16a34a;
+  --shadow: 0 8px 24px rgba(0,0,0,.12);
+  background: radial-gradient(1200px 600px at 100% -100%, #eef2ff 0%, transparent 70%), var(--bg);
+  color:var(--text);
+}
+body.theme-light .topbar{ background:rgba(255,255,255,.85); border-bottom:1px solid rgba(0,0,0,.08); }
+body.theme-light #search{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.08); }
+body.theme-light .chip{ background:#fff; color:#1f2937; border:1px solid rgba(0,0,0,.08); }
+body.theme-light .card{ background:var(--card); border:1px solid rgba(0,0,0,.08); }
+body.theme-light .thumb{ background:#f3f4f6; border:1px solid rgba(0,0,0,.06); }
+body.theme-light .desc{ color:var(--muted); }
+body.theme-light .meta-row{ color:#64748b; }
+body.theme-light .qty-btn,
+body.theme-light .qty-input{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.12); }
+body.theme-light .cart-bar{ background:rgba(255,255,255,.92); border:1px solid rgba(0,0,0,.10); }
+body.theme-light .cart-btn{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.10); }
+body.theme-light dialog::backdrop{ background:rgba(0,0,0,.35); }
+body.theme-light .cart-modal{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.10); }
+body.theme-light .icon-btn{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.12); }
+body.theme-light .cart-row{ background:#f9fafb; border:1px solid rgba(0,0,0,.08); }
+body.theme-light .toast{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.15); }
+body.theme-light .footer{ color:#64748b; }

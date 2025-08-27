@@ -34,9 +34,26 @@
     cartItems: $('#cartItems'),
     cartTotalModal: $('#cartTotalModal'),
     whatsHeader: $('#whatsHeader'),
+    themeToggle: document.getElementById('themeToggle'),
     tplCard: $('#productCardTpl'),
     tplCart: $('#cartItemTpl'),
   };
+
+  // 👉 botão para alternar o tema claro/escuro
+els.themeToggle?.addEventListener('click', () => {
+  const newTheme = (cfg.theme || 'dark') === 'light' ? 'dark' : 'light';
+  document.body.classList.toggle('theme-light', newTheme === 'light');
+  cfg.theme = newTheme;
+
+  // (opcional) ajusta a cor da barra do navegador no mobile
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  const setThemeColor = (isLight) => metaTheme?.setAttribute('content', isLight ? '#ffffff' : '#111018');
+  // logo após aplicar o tema:
+  const isLight = (cfg.theme || 'dark') === 'light';
+  setThemeColor(isLight);
+  // dentro do listener:
+  setThemeColor(newTheme === 'light');
+
 
   // Init UI header from config
   els.storeName.textContent = cfg.storeName || 'Feira Digital Diamantino';
