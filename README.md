@@ -1,22 +1,14 @@
-# Feira Digital Diamantino — tema Napoli
+# Feira Digital Diamantino — Multi‑produtor (bancas)
 
-Interface mobile-first no estilo do layout anexo (escuro + destaque magenta), com:
-- busca, categorias em *chips*, cards de produto;
-- carrinho flutuante e modal;
-- checkout por WhatsApp.
+## Páginas
+- `feira.html` — lista as bancas (produtores) de `producers.json`.
+- `index.html?produtor=<id>` — abre o catálogo da banca (usa CSV do Google Sheets ou `products.json`).
+- `cadastro.html` — formulário simples que envia o cadastro no WhatsApp do admin e permite pré‑visualizar.
 
-## Como usar
+## Configuração rápida
+1. Abra `config.js` e coloque seu WhatsApp em `whatsappPhone` e `adminWhats`.
+2. Edite `producers.json` e adicione os produtores (id, name, city, whatsapp, pixKey, dataSource.csvUrl).
+3. Publique no GitHub Pages.
+4. Use `feira.html` para escolher a banca. O botão **Ver banca** abre `index.html?produtor=ID`.
 
-1) **Troque o número do WhatsApp** em `config.js` (campo `whatsappPhone`) — só números: `55` + DDD + número.
-2) **Escolha a fonte de dados** em `config.js`:
-   - `type: "csv"` + cole a URL `output=csv` da sua planilha publicada;
-   - ou `type: "json"` para usar `products.json` (padrão deste pacote).
-3) Publique no GitHub Pages:
-   ```bash
-   git add .
-   git commit -m "tema napoli + carrinho whatsapp"
-   git push
-   ```
-4) Abra `https://SEU-USUARIO.github.io/FeiraDigitalDiamantino/`.
-
-> Se o CSV falhar, o app avisa e usa automaticamente o `products.json`.
+> Dica: Para cada produtor, publique o Google Sheets como **CSV** (Arquivo → Publicar na Web → CSV) e use o link no `csvUrl`.
