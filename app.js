@@ -1,6 +1,7 @@
 /* App logic */
 (() => {
   const cfg = window.APP_CONFIG || {};
+  document.body.classList.toggle('theme-light', (cfg.theme || 'dark') === 'light'); // aplica a classe de tema no <body>
   const R$ = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
   const $ = sel => document.querySelector(sel);
   const $$ = sel => Array.from(document.querySelectorAll(sel));
@@ -233,6 +234,13 @@
   els.checkout.addEventListener('click', checkout);
   els.checkoutModal.addEventListener('click', checkout);
   els.whatsHeader.addEventListener('click', () => openWhats('Olá! Gostaria de tirar uma dúvida.'));
+
+  els.themeToggle.addEventListener('click', () => {
+    const newTheme = (cfg.theme || 'dark') === 'light' ? 'dark' : 'light';
+    document.body.classList.toggle('theme-light', newTheme === 'light');
+    cfg.theme = newTheme;
+    toast(`Tema alterado para ${newTheme === 'light' ? 'claro' : 'escuro'}`);
+  });
 
   function checkout(){
     if (state.cart.size===0) return;

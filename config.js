@@ -2,6 +2,7 @@
 window.APP_CONFIG = {
   storeName: "Feira Digital Diamantino",
   isOpen: true,
+  theme: "light",              // << use "light" (claro) ou "dark" (escuro)
   whatsappPhone: "5565996245361", // << troque aqui pelo número com DDI + DDD, só números
   storeInfo: {
     tagline: "Retirada ou entrega combinada pelo WhatsApp"
