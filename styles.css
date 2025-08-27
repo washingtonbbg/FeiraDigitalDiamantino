@@ -188,3 +188,15 @@ body.theme-light .icon-btn{ background:#fff; color:var(--text); border:1px solid
 body.theme-light .cart-row{ background:#f9fafb; border:1px solid rgba(0,0,0,.08); }
 body.theme-light .toast{ background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.15); }
 body.theme-light .footer{ color:#64748b; }
+
+/* Texto dos botões na topbar quando o tema for CLARO */
+body.theme-light .whats-mini{
+  background: #ffffff;              /* fundo branco para contraste */
+  color: #000;                      /* texto preto como você pediu */
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+body.theme-light .whats-mini:hover{
+  filter: none;                     /* evita escurecer demais no hover */
+  box-shadow: 0 0 0 3px rgba(0,0,0,.05) inset;
+}
