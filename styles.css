@@ -191,7 +191,7 @@ body.theme-light .footer{ color:#64748b; }
 
 /* Texto dos botões na topbar quando o tema for CLARO */
 body.theme-light .whats-mini{
-  background: #ffffff;              /* fundo branco para contraste */
+  background: #25D366;              /* fundo verde para contraste */
   color: #000;                      /* texto preto como você pediu */
   border: 1px solid rgba(0,0,0,.15);
 }
