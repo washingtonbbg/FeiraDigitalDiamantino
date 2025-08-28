@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <script defer src="config.js"></script>
+  <script defer src="theme.js"></script>
   <script defer src="cadastro.js"></script>
 </head>
 <body>
@@ -21,7 +22,11 @@
         <div class="meta"><span class="badge open">Grátis</span> • Preencha e envie no WhatsApp</div>
       </div>
     </div>
-    <a class="whats-mini" href="feira.html">Voltar</a>
+    <div class="top-actions">
+      <button id="themeToggle" class="whats-mini" aria-label="Alternar tema">Tema</button>
+      <a class="whats-mini" href="feira.html">Bancas</a>
+      <a class="whats-mini" href="index.html">Catálogo</a>
+    </div>
   </header>
   <main class="form" style="max-width:720px;margin:16px auto 80px;padding:16px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px">
     <div class="row" style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
@@ -36,9 +41,8 @@
     <div class="actions" style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
       <button id="enviar" class="primary">Enviar no WhatsApp</button>
       <a id="preview" class="whats-mini" href="#" target="_blank">Pré-visualizar banca</a>
-      <a class="whats-mini" href="feira.html">Ver lista de bancas</a>
     </div>
-    <p style="color:var(--muted);margin-top:12px">Dica: publique sua planilha do Google em CSV (Arquivo → Publicar na Web) e cole o link aqui.</p>
+    <p style="color:var(--muted);margin-top:12px">Dica: publique sua planilha do Google em CSV (Arquivo → Publicar na Web → CSV) e cole o link aqui.</p>
   </main>
   <div id="toast" class="toast hidden" role="alert"></div>
 </body>
