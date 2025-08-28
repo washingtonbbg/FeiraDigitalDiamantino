@@ -3,66 +3,98 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Catálogo • Feira Digital Diamantino</title>
+  <title>Feira Digital Diamantino</title>
   <meta name="theme-color" content="#111018" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <script defer src="config.js"></script>
+  <script defer src="theme.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <div class="avatar">FD</div>
+      <div class="avatar" aria-hidden="true">FD</div>
       <div>
         <h1 id="storeName">Feira Digital Diamantino</h1>
-        <div id="storeInfo" class="meta"><span class="badge open">Aberto</span> • Entrega via WhatsApp</div>
+        <div class="meta">
+          <span class="badge open" id="storeStatus">Aberto</span>
+          <span class="sep">•</span>
+          <span id="storeInfo">Entrega via WhatsApp</span>
+        </div>
       </div>
     </div>
-    <div class="top-actions">
-      <button id="themeToggle" class="whats-mini">Tema</button>
-      <button id="whatsHeader" class="whats-mini">Whats</button>
-    </div>
+    <button id="whatsHeader" class="whats-mini" title="Falar no WhatsApp">Whats</button>
+    <button id="themeToggle" class="whats-mini" title="Alternar tema">Tema</button>
   </header>
 
   <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h2>Produtos da agricultura familiar</h2>
+        <p>Frescos, locais e com preço justo. Peça pelo WhatsApp.</p>
+      </div>
+      <div class="hero-illu" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="96" height="96" role="img">
+          <circle cx="22" cy="46" r="8" class="illu-wheel"></circle>
+          <circle cx="46" cy="50" r="6" class="illu-wheel"></circle>
+          <rect x="12" y="26" width="22" height="12" rx="2" class="illu-body"></rect>
+          <rect x="30" y="20" width="10" height="8" rx="1" class="illu-cab"></rect>
+          <rect x="40" y="34" width="14" height="6" rx="1" class="illu-cart"></rect>
+        </svg>
+      </div>
+    </div>
     <div class="search-wrap">
-      <input id="search" type="search" placeholder="Buscar produto..." />
+      <input id="search" type="search" placeholder="Buscar por nome, categoria, unidade..." />
     </div>
     <div id="categories" class="chips"></div>
   </section>
 
-  <main id="products" class="cards" aria-live="polite"></main>
+  <main id="products" class="product-list" aria-live="polite"></main>
 
-  <footer id="cartBar" class="cartbar hidden">
-    <button id="openCart" class="primary">Carrinho (<span id="cartCount">0</span>) • <span id="cartTotal">R$ 0,00</span></button>
-  </footer>
+  <div id="cartBar" class="cart-bar hidden">
+    <button id="openCart" class="cart-btn">
+      <span id="cartCount">0</span> itens • <span id="cartTotal">R$ 0,00</span>
+    </button>
+    <button id="checkout" class="primary">Finalizar</button>
+  </div>
 
-  <dialog id="cartModal" class="modal">
-    <div class="modal-head">
-      <strong>Seu carrinho</strong>
-      <button id="closeCart" class="icon">✕</button>
+  <dialog id="cartModal">
+    <div class="cart-modal">
+      <div class="cart-head">
+        <h3>Seu carrinho</h3>
+        <button class="icon-btn" id="closeCart" aria-label="Fechar">✕</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-foot">
+        <div class="sum">
+          <strong>Total</strong>
+          <span id="cartTotalModal">R$ 0,00</span>
+        </div>
+        <button id="checkoutModal" class="primary large">Enviar pedido no WhatsApp</button>
+      </div>
     </div>
-    <div id="cartItems" class="cart-list"></div>
-    <div class="cart-total">Total: <strong id="cartTotalModal">R$ 0,00</strong></div>
-    <button id="checkout" class="primary">Enviar pedido no WhatsApp</button>
   </dialog>
 
   <template id="productCardTpl">
     <article class="card">
       <div class="thumb"></div>
       <div class="info">
-        <h3 class="title"></h3>
+        <h4 class="title"></h4>
         <p class="desc"></p>
-        <div class="meta-line"><span class="category"></span> • <span class="unit"></span></div>
-        <div class="buy">
-          <strong class="price">R$ 0,00</strong>
+        <div class="meta-row">
+          <span class="unit"></span>
+          <span class="dot">•</span>
+          <span class="category"></span>
+        </div>
+        <div class="price-row">
+          <strong class="price"></strong>
           <div class="qty">
-            <button class="qty-btn minus">−</button>
-            <input class="qty-input" type="number" inputmode="numeric" min="0" value="0"/>
-            <button class="qty-btn plus">+</button>
+            <button class="qty-btn minus" aria-label="Diminuir">–</button>
+            <input class="qty-input" type="number" min="0" step="1" value="0" aria-label="Quantidade">
+            <button class="qty-btn plus" aria-label="Aumentar">+</button>
           </div>
         </div>
       </div>
@@ -70,17 +102,21 @@
   </template>
 
   <template id="cartItemTpl">
-    <div class="cart-item">
-      <span class="cart-name"></span>
-      <div class="qty">
-        <button class="qty-btn" data-action="minus">−</button>
-        <input class="qty-input" type="number" inputmode="numeric" min="0" value="0"/>
+    <div class="cart-row">
+      <div class="cart-name"></div>
+      <div class="cart-controls">
+        <button class="qty-btn" data-action="minus">–</button>
+        <input class="qty-input" type="number" min="0" step="1" value="1" aria-label="Quantidade">
         <button class="qty-btn" data-action="plus">+</button>
+        <div class="cart-line"></div>
       </div>
-      <span class="cart-line">R$ 0,00</span>
     </div>
   </template>
 
   <div id="toast" class="toast hidden" role="alert"></div>
+
+  <footer class="footer">
+    <p>Feito com ❤️ para os produtores locais. <a href="https://github.com/washingtonbbg/FeiraDigitalDiamantino" target="_blank" rel="noopener">Código no GitHub</a></p>
+  </footer>
 </body>
 </html>
