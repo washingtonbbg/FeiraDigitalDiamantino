@@ -6,8 +6,8 @@
     "tagline": "Verduras fresquinhas colhidas no dia",
     "logo": "",
     "cover": "",
-    "whatsapp": "5565999990001",
-    "pixKey": "000.111.222-33",
+    "whatsapp": "5565996245361",
+    "pixKey": "004.465.741-20",
     "dataSource": {
       "type": "json",
       "jsonUrl": "products.json"
@@ -20,7 +20,7 @@
     "tagline": "Frutas da estação e doces artesanais",
     "logo": "",
     "cover": "",
-    "whatsapp": "5565999990002",
+    "whatsapp": "5565996245361",
     "pixKey": "pix@saojorge.com",
     "dataSource": {
       "type": "csv",
