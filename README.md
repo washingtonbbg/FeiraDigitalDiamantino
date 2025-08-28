@@ -1,14 +1,22 @@
-# Feira Digital Diamantino — Multi‑produtor (bancas)
+# Feira Digital Diamantino — Pronto para publicar
 
-## Páginas
-- `feira.html` — lista as bancas (produtores) de `producers.json`.
-- `index.html?produtor=<id>` — abre o catálogo da banca (usa CSV do Google Sheets ou `products.json`).
-- `cadastro.html` — formulário simples que envia o cadastro no WhatsApp do admin e permite pré‑visualizar.
+## O que está incluso
+- **index.html, app.js, styles.css** — catálogo com carrinho e WhatsApp
+- **config.js** — suas configurações (nome, Whats, tema, fonte de dados)
+- **products.json** — catálogo local (exemplo)
+- **theme.js** — botão Tema (claro/escuro) e meta theme-color
+- **feira.html, feira.js, producers.json** — lista de bancas (multi-vendedor)
+- **cadastro.html, cadastro.js** — cadastro simples do produtor por WhatsApp
 
-## Configuração rápida
-1. Abra `config.js` e coloque seu WhatsApp em `whatsappPhone` e `adminWhats`.
-2. Edite `producers.json` e adicione os produtores (id, name, city, whatsapp, pixKey, dataSource.csvUrl).
-3. Publique no GitHub Pages.
-4. Use `feira.html` para escolher a banca. O botão **Ver banca** abre `index.html?produtor=ID`.
+## Como usar
+1. Edite `config.js` e coloque seu Whats em `whatsappPhone` e `adminWhats`.
+2. Se for usar **planilha** por produtor, publique o Google Sheets em **CSV** e cole o link no `producers.json` (campo `csvUrl`).
+3. Faça deploy (GitHub Pages): suba todos os arquivos para o repositório.
+4. Acesse:
+   - Lista de bancas: `feira.html`
+   - Catálogo padrão: `index.html`
+   - Catálogo de uma banca: `index.html?produtor=ID_DA_BANCA`
 
-> Dica: Para cada produtor, publique o Google Sheets como **CSV** (Arquivo → Publicar na Web → CSV) e use o link no `csvUrl`.
+## Dicas
+- Para personalizar o tema inicial: em `config.js`, mude `theme: "dark"` para `"light"`.
+- O botão **Tema** lembra a preferência do usuário no navegador (localStorage).
