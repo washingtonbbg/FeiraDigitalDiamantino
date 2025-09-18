@@ -1,4 +1,4 @@
-/* theme.js — alterna tema claro/escuro em todas as páginas */
+﻿/* theme.js — alterna tema claro/escuro em todas as páginas */
 (() => {
   if (window.__themeInit) return;
   window.__themeInit = true;

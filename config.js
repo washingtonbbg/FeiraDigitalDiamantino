@@ -1,21 +1,9 @@
-// CONFIGURAÇÕES DO PROJETO (edite aqui)
-window.AGRO_CFG = {
-  brandName: "Rede AgroFamiliar Diamantino",
-  whatsappCentral: "5565996245361",   // DDD + número sem + ou espaços
-  pixKey: "004.465.741-20 (CPF)",
-  pickupPoints: [
-    "Feira Municipal (Sex 17h-18h)",
-    "Escola Secitec – (Sex 17h-18h)"
-  ],
-  currency: "R$",
-
-  // === Fonte dos produtos ===
-  // (1) Google Sheets CSV publicado (recomendado para catálogo dinâmico)
-  // PASSO: No Google Sheets → Arquivo → Publicar na Web → Selecione a aba Produtos → formato CSV
-  // Cole aqui o URL gerado (termina com 'output=csv' ou 'export?format=csv&gid=...'):
-  //https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hjr9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIIpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
-
-  // (2) Fallback local (se csvUrl estiver vazio): carrega 'products.json' deste repositório
- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTOR66Rr5hjr9-l6-j5cfMRdtFwt38A49Mrp_qjpYPLM88NIfwD-EnXXIIpgAmkPSfAv-f_9GJDWLUe/pub?gid=70692563&single=true&output=csv",
-
+﻿window.APP_CONFIG = {
+  storeName: "Feira Digital Diamantino",
+  storeInfo: { tagline: "Entrega via WhatsApp" },
+  whatsappPhone: "5565996245361",
+  adminWhats: "5565996245361",
+  theme: "dark",
+  checkout: { note: "Obrigado por comprar dos produtores locais!" },
+  dataSource: { type: "json", jsonUrl: "products.json" }
 };

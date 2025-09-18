@@ -1,115 +1,74 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cadastro de Produtor • Feira Digital Diamantino</title>
-  <meta name="theme-color" content="#111018" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="config.js"></script>
-  <script defer src="theme.js"></script>
-  <script defer src="cadastro.js"></script>
-  <style>
-    .form{max-width:840px;margin:16px auto 80px;padding:16px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px}
-    .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-    .row-3{display:grid;gap:12px;grid-template-columns:1fr 1fr 1fr}
-    .field label{display:block;margin:4px 0 6px;font-weight:600}
-    .field input,.field textarea,.field select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--text)}
-    .hint{font-size:12px;color:var(--muted)}
-    .error{font-size:12px;color:#ef4444;margin-top:4px;display:none}
-    .error.show{display:block}
-    .section-title{margin:18px 0 8px;font-weight:800}
-    .group{border:1px dashed rgba(255,255,255,.12);border-radius:14px;padding:12px}
-    .checks{display:flex;gap:12px;flex-wrap:wrap}
-    .checks label{display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:10px;cursor:pointer}
-    .actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
-    .split{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .mono{font-family:Consolas,monospace}
-    @media(max-width:720px){.row,.row-3{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="avatar">FD</div>
-      <div>
-        <h1>Cadastro de Produtor</h1>
-        <div class="meta"><span class="badge open">Grátis</span> • Preencha e envie no WhatsApp</div>
-      </div>
+﻿<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cadastro de Produtor • Feira Digital Diamantino</title>
+<meta name="theme-color" content="#111018"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+<script defer src="config.js"></script><script defer src="theme.js"></script><script defer src="cadastro.js"></script>
+<style>
+.form{max-width:840px;margin:16px auto 80px;padding:16px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px}
+.row{display:grid;gap:12px;grid-template-columns:1fr 1fr}.row-3{display:grid;gap:12px;grid-template-columns:1fr 1fr 1fr}
+.field label{display:block;margin:4px 0 6px;font-weight:600}
+.field input,.field textarea,.field select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--text)}
+.hint{font-size:12px;color:var(--muted)}.error{font-size:12px;color:#ef4444;margin-top:4px;display:none}.error.show{display:block}
+.section-title{margin:18px 0 8px;font-weight:800}.group{border:1px dashed rgba(255,255,255,.12);border-radius:14px;padding:12px}
+.checks{display:flex;gap:12px;flex-wrap:wrap}.checks label{display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:10px;cursor:pointer}
+.actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}.split{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.mono{font-family:Consolas,monospace}
+@media(max-width:720px){.row,.row-3{grid-template-columns:1fr}}
+</style>
+</head><body>
+<header class="topbar"><div class="brand"><div class="avatar">FD</div><div><h1>Cadastro de Produtor</h1><div class="meta"><span class="badge open">Grátis</span> • Preencha e envie no WhatsApp</div></div></div>
+<div class="top-actions"><button id="themeToggle" class="whats-mini" aria-label="Alternar tema">Tema</button><a class="whats-mini" href="index.html">Bancas</a><a class="whats-mini" href="catalogo.html">Catálogo</a></div></header>
+<main class="form">
+  <div class="row">
+    <div class="field"><label for="nome">Nome da banca / produtor *</label><input id="nome" placeholder="Ex.: Horta Dona Maria" required/></div>
+    <div class="field"><label for="cidade">Cidade *</label><input id="cidade" placeholder="Diamantino - MT" required/></div>
+    <div class="field"><label for="whats">WhatsApp (somente dígitos) *</label><input id="whats" placeholder="5565999990000" required inputmode="numeric"/></div>
+    <div class="field"><label for="pix">Chave Pix</label><input id="pix" placeholder="CPF, CNPJ, e-mail ou aleatória"/></div>
+    <div class="field"><label for="logo">Logo (URL ou data:... base64)</label><input id="logo" placeholder="https://..."/></div>
+    <div class="field"><label for="csv">Catálogo (Google Sheets publicado em CSV)</label><input id="csv" placeholder="https://docs.google.com/...&output=csv"/></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="tagline">Descrição curta</label><input id="tagline" placeholder="Ex.: Verduras fresquinhas colhidas no dia"/></div>
+    <div class="field"><label for="categorias">Categorias (separadas por vírgula)</label><input id="categorias" placeholder="Verduras, Frutas, Ovos"/></div>
+  </div>
+  <div class="section-title">Operação</div>
+  <div class="group">
+    <div class="row-3">
+      <div class="field"><label for="horarios">Horários</label><input id="horarios" placeholder="Seg-Sáb 7h-18h"/></div>
+      <div class="field"><label for="bairro">Bairro / Região</label><input id="bairro" placeholder="Centro"/></div>
+      <div class="field"><label for="taxa">Taxa de entrega (R$)</label><input id="taxa" placeholder="0,00"/></div>
     </div>
-    <div class="top-actions">
-      <button id="themeToggle" class="whats-mini" aria-label="Alternar tema">Tema</button>
-      <a class="whats-mini" href="feira.html">Bancas</a>
-      <a class="whats-mini" href="index.html">Catálogo</a>
+    <div class="checks" style="margin-top:8px">
+      <label><input type="checkbox" id="entrega"/>Entrega</label>
+      <label><input type="checkbox" id="retirada"/>Retirada</label>
+      <label><input type="checkbox" id="agendamento"/>Agendamento</label>
     </div>
-  </header>
-
-  <main class="form">
-    <div class="row">
-      <div class="field"><label for="nome">Nome da banca / produtor *</label><input id="nome" placeholder="Ex.: Horta Dona Maria" required /></div>
-      <div class="field"><label for="cidade">Cidade *</label><input id="cidade" placeholder="Diamantino - MT" required /></div>
-      <div class="field"><label for="whats">WhatsApp (somente dígitos) *</label><input id="whats" placeholder="5565999990000" required inputmode="numeric" /></div>
-      <div class="field"><label for="pix">Chave Pix</label><input id="pix" placeholder="CPF, CNPJ, e-mail ou aleatória" /></div>
-      <div class="field"><label for="logo">Logo (URL ou data:... base64)</label><input id="logo" placeholder="https://..." /></div>
-      <div class="field"><label for="csv">Catálogo (Google Sheets publicado em CSV)</label><input id="csv" placeholder="https://docs.google.com/...&output=csv" /></div>
-    </div>
-    <div class="row">
-      <div class="field"><label for="tagline">Descrição curta</label><input id="tagline" placeholder="Ex.: Verduras fresquinhas colhidas no dia" /></div>
-      <div class="field"><label for="categorias">Categorias (separadas por vírgula)</label><input id="categorias" placeholder="Verduras, Frutas, Ovos" /></div>
-    </div>
-
-    <div class="section-title">Operação</div>
-    <div class="group">
-      <div class="row-3">
-        <div class="field"><label for="horarios">Horários</label><input id="horarios" placeholder="Seg-Sáb 7h-18h" /></div>
-        <div class="field"><label for="bairro">Bairro / Região</label><input id="bairro" placeholder="Centro" /></div>
-        <div class="field"><label for="taxa">Taxa de entrega (R$)</label><input id="taxa" placeholder="0,00" /></div>
-      </div>
-      <div class="checks" style="margin-top:8px">
-        <label><input type="checkbox" id="entrega" />Entrega</label>
-        <label><input type="checkbox" id="retirada" />Retirada</label>
-        <label><input type="checkbox" id="agendamento" />Agendamento</label>
-      </div>
-    </div>
-
-    <div class="section-title">Pagamentos aceitos</div>
-    <div class="group checks">
-      <label><input type="checkbox" class="pay" value="Pix" checked/>Pix</label>
-      <label><input type="checkbox" class="pay" value="Dinheiro" />Dinheiro</label>
-      <label><input type="checkbox" class="pay" value="Cartão Débito" />Cartão Débito</label>
-      <label><input type="checkbox" class="pay" value="Cartão Crédito" />Cartão Crédito</label>
-    </div>
-
-    <div class="section-title">Redes sociais (opcional)</div>
-    <div class="row">
-      <div class="field"><label for="instagram">Instagram</label><input id="instagram" placeholder="@sualoja ou link completo" /></div>
-      <div class="field"><label for="facebook">Facebook</label><input id="facebook" placeholder="Página ou link completo" /></div>
-    </div>
-
-    <div class="split" style="margin-top:10px">
-      <div class="mono">ID gerado: <span id="idPreview">—</span></div>
-      <div class="hint">O ID é usado na URL: <code>index.html?produtor=<span id="idPreviewSmall">id</span></code></div>
-    </div>
-    <div id="valErrors" class="error"></div>
-
-    <div class="actions">
-      <button id="enviar" class="primary">Enviar no WhatsApp</button>
-      <a id="preview" class="whats-mini" href="#" target="_blank">Pré-visualizar banca</a>
-      <button id="copiarJson" class="whats-mini" type="button">Copiar JSON</button>
-      <button id="baixarJson" class="whats-mini" type="button">Baixar JSON</button>
-      <button id="validarCsv" class="whats-mini" type="button">Validar CSV</button>
-      <button id="salvarRascunho" class="whats-mini" type="button">Salvar rascunho</button>
-      <button id="limpar" class="whats-mini" type="button">Limpar</button>
-    </div>
-
-    <p class="hint" style="margin-top:12px">
-      Dica: publique sua planilha do Google em CSV (Arquivo → Publicar na Web) e cole o link aqui.
-      O CSV deve terminar com <code>&output=csv</code>.
-    </p>
-    <div id="toast" class="toast hidden" role="alert"></div>
-  </main>
-</body>
-</html>
+  </div>
+  <div class="section-title">Pagamentos aceitos</div>
+  <div class="group checks">
+    <label><input type="checkbox" class="pay" value="Pix" checked/>Pix</label>
+    <label><input type="checkbox" class="pay" value="Dinheiro"/>Dinheiro</label>
+    <label><input type="checkbox" class="pay" value="Cartão Débito"/>Cartão Débito</label>
+    <label><input type="checkbox" class="pay" value="Cartão Crédito"/>Cartão Crédito</label>
+  </div>
+  <div class="section-title">Redes sociais (opcional)</div>
+  <div class="row">
+    <div class="field"><label for="instagram">Instagram</label><input id="instagram" placeholder="@sualoja ou link completo"/></div>
+    <div class="field"><label for="facebook">Facebook</label><input id="facebook" placeholder="Página ou link completo"/></div>
+  </div>
+  <div class="split" style="margin-top:10px"><div class="mono">ID gerado: <span id="idPreview">—</span></div><div class="hint">URL: <code>catalogo.html?produtor=<span id="idPreviewSmall">id</span></code></div></div>
+  <div id="valErrors" class="error"></div>
+  <div class="actions">
+    <button id="enviar" class="primary">Enviar no WhatsApp</button>
+    <a id="preview" class="whats-mini" href="#" target="_blank">Pré-visualizar banca</a>
+    <button id="copiarJson" class="whats-mini" type="button">Copiar JSON</button>
+    <button id="baixarJson" class="whats-mini" type="button">Baixar JSON</button>
+    <button id="validarCsv" class="whats-mini" type="button">Validar CSV</button>
+    <button id="salvarRascunho" class="whats-mini" type="button">Salvar rascunho</button>
+    <button id="limpar" class="whats-mini" type="button">Limpar</button>
+  </div>
+  <p class="hint" style="margin-top:12px">Dica: publique sua planilha do Google em CSV (Arquivo → Publicar na Web) e cole o link aqui. Deve terminar com <code>&output=csv</code>.</p>
+  <div id="toast" class="toast hidden" role="alert"></div>
+</main></body></html>
