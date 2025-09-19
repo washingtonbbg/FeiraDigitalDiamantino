@@ -10,7 +10,7 @@
     "pixKey": "5565996068058",
     "ops": {"entrega": true, "retirada": true, "agendamento": false, "bairro": "Centro", "horarios": "Seg-Sáb 7h-18h", "taxaEntrega": 0},
     "meta": {"categories": ["Verduras","Temperos"], "payments": ["Pix","Dinheiro"], "instagram":"@hortadonamaria"},
-    "dataSource": { "type": "csv", "csvUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn96gFshF1h8iNniG-PlSPRQ0dHEMzRc3-vZ96g6zG3Z654qe77XYdEkac0LsTIS5dgmgH9AkQ-P4N/pub?gid=1468943613&single=true&output=csv", "products.json" }
+    "dataSource": { "type": "csv", "csvUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn96gFshF1h8iNniG-PlSPRQ0dHEMzRc3-vZ96g6zG3Z654qe77XYdEkac0LsTIS5dgmgH9AkQ-P4N/pub?gid=1468943613&single=true&output=csv", "jsonUrl": "products.json" }
   },
   {
     "id": "Mikaelly almeida",
