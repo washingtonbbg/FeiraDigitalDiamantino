@@ -23,6 +23,6 @@
     "pixKey": "556599325223",
     "ops": {"entrega": true, "retirada": false, "agendamento": true, "bairro": "Vila Nova", "horarios": "Seg-Dom 8h-19h", "taxaEntrega": 5.5},
     "meta": {"categories": ["Frutas","Doces"], "payments": ["Pix","Cartão Débito","Cartão Crédito"], "facebook":"fb.com/saojorge"},
-    "dataSource": { "type": "csv", "csvUrl": "COLE_AQUI_A_URL_CSV_DO_PRODUTOR_2", "jsonUrl": "products.json" }
+    "dataSource": { "type": "csv", "csvUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn96gFshF1h8iNniG-PlSPRQ0dHEMzRc3-vZ96g6zG3Z654qe77XYdEkac0LsTIS5dgmgH9AkQ-P4N/pub?gid=0&single=true&output=csv", "jsonUrl": "products.json" }
   }
 ]
