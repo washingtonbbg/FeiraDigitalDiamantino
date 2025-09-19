@@ -25,33 +25,4 @@
     "meta": {"categories": ["Frutas","Doces"], "payments": ["Pix","Cartão Débito","Cartão Crédito"], "facebook":"fb.com/saojorge"},
     "dataSource": { "type": "csv", "csvUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn96gFshF1h8iNniG-PlSPRQ0dHEMzRc3-vZ96g6zG3Z654qe77XYdEkac0LsTIS5dgmgH9AkQ-P4N/pub?gid=0&single=true&output=csv", "jsonUrl": "products.json" }
   }
-{
-  "id": "pedro",
-  "name": "Pedro",
-  "city": "Diamantino-MT",
-  "tagline": "",
-  "logo": "",
-  "whatsapp": "5565996068058",
-  "pixKey": "",
-  "dataSource": {
-    "type": "json",
-    "csvUrl": "",
-    "jsonUrl": "products.json"
-  },
-  "ops": {
-    "entrega": true,
-    "retirada": true,
-    "agendamento": true,
-    "taxaEntrega": 0
-  },
-  "meta": {
-    "categories": [],
-    "payments": [
-      "Pix",
-      "Dinheiro",
-      "Cartão Débito",
-      "Cartão Crédito"
-    ]
-  }
-}
  ]
