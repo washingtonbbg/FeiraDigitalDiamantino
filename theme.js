@@ -1,19 +1,63 @@
-﻿/* theme.js — alterna tema claro/escuro em todas as páginas */
-(() => {
-  if (window.__themeInit) return;
-  window.__themeInit = true;
-  const KEY='theme';
-  let meta=document.querySelector('meta[name="theme-color"]');
-  if(!meta){ meta=document.createElement('meta'); meta.setAttribute('name','theme-color'); document.head.appendChild(meta); }
-  const read=()=>{ try{return localStorage.getItem(KEY)}catch{return null} };
-  const initial = read() || (window.APP_CONFIG && window.APP_CONFIG.theme) || 'dark';
-  const apply = (t)=>{ const light=(t==='light'); document.body.classList.toggle('theme-light', light); meta.setAttribute('content', light?'#ffffff':'#111018'); };
-  const set = (t)=>{ apply(t); try{localStorage.setItem(KEY,t)}catch{} };
-  const get = ()=> document.body.classList.contains('theme-light')?'light':'dark';
-  const toggle = ()=> set(get()==='light'?'dark':'light');
-  apply(initial);
-  const bind=()=>{ const b=document.getElementById('themeToggle'); if(!b||b.dataset.bound) return; b.dataset.bound='1'; b.addEventListener('click', toggle); };
-  bind(); document.addEventListener('DOMContentLoaded', bind);
-  window.addEventListener('storage', e=>{ if(e.key===KEY) apply(e.newValue||'dark'); });
-  window.Theme = {get,set,toggle,apply,init:()=>{ apply(read()||initial); bind(); }};
+﻿<!-- theme.js -->
+<script>
+(function() {
+  const KEY = "fd_theme";
+
+  function apply(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    try { localStorage.setItem(KEY, theme); } catch {}
+    // Atualiza o texto dos botões se existirem
+    document.querySelectorAll("#themeToggle, .js-theme-toggle").forEach(btn => {
+      btn.textContent = theme === "dark" ? "Claro" : "Tema";
+      btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      btn.title = theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro";
+    });
+  }
+
+  function preferred() {
+    // salvo > sistema > claro
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (saved === "dark" || saved === "light") return saved;
+    } catch {}
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function toggle() {
+    const cur = document.documentElement.getAttribute("data-theme") || preferred();
+    apply(cur === "dark" ? "light" : "dark");
+  }
+
+  function init() {
+    // aplica na primeira carga
+    apply(preferred());
+
+    // liga em todos os botões com id ou classe
+    const bind = () => {
+      document.querySelectorAll("#themeToggle, .js-theme-toggle").forEach(btn => {
+        btn.removeEventListener("click", toggle);
+        btn.addEventListener("click", toggle);
+      });
+    };
+    bind();
+    document.addEventListener("DOMContentLoaded", bind);
+
+    // sincroniza entre abas
+    window.addEventListener("storage", e => {
+      if (e.key === KEY && (e.newValue === "dark" || e.newValue === "light")) {
+        apply(e.newValue);
+      }
+    });
+
+    // segue mudança do sistema se usuário não fixou manualmente
+    const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+    if (mq && mq.addEventListener) {
+      mq.addEventListener("change", () => {
+        try { if (!localStorage.getItem(KEY)) apply(preferred()); } catch {}
+      });
+    }
+  }
+
+  init();
 })();
+</script>

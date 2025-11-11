@@ -1,4 +1,38 @@
 ﻿[
-  {"Nome":"Alface Crespa","Preço":"5,00","Unidade":"unidade","Categoria":"Verduras","Descrição":"Fresca da horta","Imagem":"","Ativo":"SIM"},
-  {"Nome":"Tomate","Preço":"8,50","Unidade":"kg","Categoria":"Hortifruti","Descrição":"Tomate vermelho","Imagem":"","Ativo":"SIM"}
+  {
+    "Nome": "Alface Crespa",
+    "Preço": "5,00",
+    "Unidade": "unidade",
+    "Categoria": "Verduras",
+    "Descrição": "Fresca da horta",
+    "Imagem": "alface-crespa.webp",
+    "Ativo": "SIM"
+  },
+  {
+    "Nome": "Tomate",
+    "Preço": "8,50",
+    "Unidade": "kg",
+    "Categoria": "Hortifruti",
+    "Descrição": "Tomate vermelho",
+    "Imagem": "tomate.jpeg",
+    "Ativo": "SIM"
+  },
+  {
+    "Nome": "Ovos Caipiras",
+    "Preço": "18,00",
+    "Unidade": "dúzia",
+    "Categoria": "Granja",
+    "Descrição": "Ovos de galinhas criadas soltas",
+    "Imagem": "ovos-caipiras.jpeg",
+    "Ativo": "SIM"
+  },
+  {
+    "Nome": "Pão de Caseiro",
+    "Preço": "12,00",
+    "Unidade": "unidade",
+    "Categoria": "Padaria",
+    "Descrição": "Pão caseiro macio",
+    "Imagem": "pao-de-caseiro.jpeg",
+    "Ativo": "SIM"
+  }
 ]

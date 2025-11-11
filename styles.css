@@ -1,44 +1,285 @@
-﻿*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto}
-:root{--bg:#0b0a12;--card:#151324;--text:#eae8ff;--muted:#b7b2ff;--accent:#ff0f7b;--accent-2:#7a5cff;--ok:#22c55e}
-body{background:radial-gradient(1200px 600px at 100% -100%, #1b1730 0%, transparent 70%),var(--bg);color:var(--text)}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 14px}
-.brand{display:flex;gap:10px;align-items:center}
-.avatar{width:40px;height:40px;background:#211d37;border-radius:12px;display:grid;place-items:center;font-weight:800}
-.meta{color:var(--muted);font-size:12px}
-.top-actions{display:flex;gap:8px;align-items:center}
-.whats-mini{background:#25D366;color:#000;border:1px solid #1bb654;border-radius:10px;padding:8px 12px;cursor:pointer;text-decoration:none;display:inline-block}
-.hero{padding:0 14px 8px}
-.search-wrap input{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:#14121d;color:#fff}
-.chips{display:flex;gap:8px;padding:10px 14px;flex-wrap:wrap}
-.chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--text);cursor:pointer}
-.chip.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none}
-.cards{display:grid;gap:12px;padding:12px 14px 80px}
-@media(min-width:700px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(min-width:1024px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.card{display:flex;gap:12px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:10px}
-.thumb{width:100px;height:100px;border-radius:12px;background:#14121d;background-size:cover;background-position:center;border:1px solid rgba(255,255,255,.06)}
-.info{min-width:0;flex:1}
-.title{margin:0 0 4px}
-.desc{margin:0 0 4px;color:var(--muted);font-size:13px}
-.meta-line{font-size:12px;color:var(--muted);margin-bottom:8px}
-.buy{display:flex;justify-content:space-between;align-items:center}
-.qty{display:flex;align-items:center;gap:6px}
-.qty-input{width:56px;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--text)}
-.qty-btn{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--text);cursor:pointer}
-.cartbar{position:fixed;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;justify-content:center}
-.cartbar .primary{border:none;background:transparent;color:#fff;font-weight:800;cursor:pointer}
-.modal{border:none;border-radius:16px;padding:0;max-width:720px;width:92%;background:var(--card);color:var(--text)}
-.modal-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
-.cart-list{padding:12px 14px;display:grid;gap:8px;max-height:40vh;overflow:auto}
-.cart-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center}
-.cart-total{padding:0 14px 12px;text-align:right}
-.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none;padding:10px 14px;border-radius:12px;cursor:pointer;text-decoration:none}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#111018;color:#fff;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12)}
-.hidden{display:none}
-/* Tema claro */
-body.theme-light{--bg:#f6f7fb;--card:#ffffff;--text:#0f172a;--muted:#475569;background:radial-gradient(1200px 600px at 100% -100%, #eef2ff 0%, transparent 70%), var(--bg)}
-body.theme-light .search-wrap input{background:#fff;color:#0f172a;border:1px solid rgba(0,0,0,.12)}
-body.theme-light .card{border:1px solid rgba(0,0,0,.08)}
-body.theme-light .thumb{background:#f3f4f6;border:1px solid rgba(0,0,0,.06)}
-body.theme-light .qty-input, body.theme-light .qty-btn{border:1px solid rgba(0,0,0,.12);color:#0f172a}
-body.theme-light .whats-mini{background:#25D366;color:#000;border:1px solid #1bb654}
+﻿/* ========================================================================
+   FEIRA DIGITAL — CSS LIMPO E ESTÁVEL
+   - Layout centralizado com largura fixa
+   - Lista vertical (1 card por linha) com imagem à esquerda
+   - Sem regras duplicadas e sem media queries conflitantes
+   ======================================================================== */
+
+/* ---------- Variáveis de tema ---------- */
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --muted-2: #9aa3af;
+  --brand: #6c5ce7;
+  --chip-bg: #efe9ff;
+  --chip-fg: #1f1147;
+  --shadow-1: 0 2px 8px rgba(14, 23, 38, .06);
+  --shadow-2: 0 3px 10px rgba(14, 23, 38, .08);
+  --radius: 16px;
+}
+
+/* ---------- Reset leve ---------- */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ========================================================================
+   LAYOUT CENTRAL
+   ======================================================================== */
+.main-container{
+  width: 100%;
+  max-width: 1120px;   /* largura máxima do site */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.topbar, .hero, .search-wrap, .chips, .cards{
+  max-width: 1000px; /* largura interna */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================================================
+   HERO / CABEÇALHO DA BANCA
+   ======================================================================== */
+.hero{ padding: 16px 0 8px; }
+.hero-inner{ display:flex; align-items:center; gap:12px; }
+.hero .title{ font-size: 2rem; font-weight: 900; margin:0; }
+.hero .subtitle{ color: var(--muted); margin: 4px 0 0; }
+
+/* ========================================================================
+   BUSCA E CATEGORIAS
+   ======================================================================== */
+.search-wrap{ padding: 8px 0 12px; }
+.search-wrap input[type="search"],
+.search-wrap input[type="text"]{
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid #e7eaf0;
+  padding: 0 16px;
+  outline: none;
+  color: var(--text);
+  box-shadow: var(--shadow-1);
+}
+
+.chips{
+  display:flex; flex-wrap:wrap; gap:10px;
+  padding: 10px 0 16px;
+}
+.chip{
+  border: 0; padding: 8px 14px; border-radius: 999px;
+  cursor: pointer; font-weight: 700; background: var(--card); color: var(--text);
+  box-shadow: var(--shadow-1);
+}
+.chip.active{
+  background: linear-gradient(90deg, #b46cff, #ff5fd2);
+  color: #fff;
+}
+
+/* ========================================================================
+   LISTA DE PRODUTOS — 1 POR LINHA
+   ======================================================================== */
+.cards{
+  display: grid;
+  grid-template-columns: 1fr;   /* sempre uma coluna */
+  gap: 18px;
+  padding-bottom: 32px;
+}
+
+/* Card horizontal com thumb à esquerda */
+.card{
+  display: grid;
+  grid-template-columns: 200px 1fr;   /* imagem | conteúdo */
+  align-items: center;
+  gap: 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: 18px 20px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{ transform: translateY(-2px); box-shadow: var(--shadow-2); }
+
+/* Miniatura */
+.card .thumb{
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+/* Conteúdo à direita */
+.card .info{ display:flex; flex-direction:column; gap:6px; }
+.card .title{ font-size: 1.22rem; font-weight: 800; margin:0; }
+.card .desc{ color: var(--muted); margin:0; }
+.card .meta{ color: var(--muted-2); font-size:.95rem; }
+.card .price{ font-size:1.1rem; font-weight:800; color: var(--text); margin-top:6px; }
+
+/* Controles de quantidade compactos */
+.qty{ display:inline-flex; align-items:center; gap:6px; }
+.qty-btn, .btn{
+  border:1px solid #e7eaf0; background:#fff; height:32px; min-width:32px;
+  border-radius: 10px; display:inline-flex; align-items:center; justify-content:center;
+  cursor:pointer;
+}
+.qty-input{
+  width:46px; height:32px; text-align:center; border:1px solid #e7eaf0;
+  border-radius: 10px; background:#fff; color:var(--text);
+}
+
+/* ========================================================================
+   RESPONSIVO — reduz proporcionalmente
+   ======================================================================== */
+@media (max-width: 1024px){
+  .main-container{ max-width: 980px; }
+  .card{ grid-template-columns: 170px 1fr; gap:16px; padding:16px; }
+  .card .thumb{ width:170px; height:170px; }
+}
+@media (max-width: 720px){
+  .main-container{ max-width: 640px; padding: 0 16px; }
+  .hero .title{ font-size: 1.6rem; }
+  .card{ grid-template-columns: 140px 1fr; gap:14px; padding:14px; }
+  .card .thumb{ width:140px; height:140px; }
+}
+@media (max-width: 420px){
+  .card{ grid-template-columns: 110px 1fr; gap:12px; padding:12px; }
+  .card .thumb{ width:110px; height:110px; }
+}
+
+/* ========================================================================
+   BARRA DO CARRINHO / TOAST (básico)
+   ======================================================================== */
+#cartBar{
+  position: sticky; bottom: 12px; left:0; right:0; margin: 12px auto 0;
+  max-width: 1000px; display:flex; align-items:center; justify-content:space-between;
+  gap: 12px; padding: 10px 14px; background:#fff; border-radius: 999px;
+  box-shadow: var(--shadow-2);
+}
+#cartBar.hidden{ display:none; }
+
+#toast{
+  position: fixed; bottom: 18px; left:50%; transform: translateX(-50%);
+  background:#111; color:#fff; padding:10px 14px; border-radius: 10px;
+  opacity:0; pointer-events:none; transition: opacity .2s ease;
+}
+#toast.show{ opacity:1; }
+
+/* ========================================================================
+   FIM
+   ======================================================================== */
+
+   /* ===== TOPO / MENU — restaura cores das pílulas ===== */
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 16px 0;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.avatar{
+  width:40px; height:40px; border-radius:50%;
+  background:#11131a; color:#fff; display:flex; align-items:center; justify-content:center;
+  font-weight:800; box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+/* pílulas (Tema, Bancas, Whats) */
+.whats-mini, .topbar .primary{
+  --green:#22c55e;
+  display:inline-flex; align-items:center; justify-content:center;
+  height: 34px; padding: 0 14px; border-radius: 999px;
+  border: 0; text-decoration:none; cursor:pointer;
+  background: var(--green); color:#fff; font-weight:800;
+  box-shadow: 0 2px 8px rgba(34,197,94,.35);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.whats-mini:hover, .topbar .primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34,197,94,.45);
+  filter: saturate(1.1);
+}
+.whats-mini:active{ transform: translateY(0); }
+
+/* variações úteis (se quiser diferenciar Tema/Bancas/Whats) */
+.whats-mini.theme { --green:#8b5cf6; }   /* lilás */
+.whats-mini.bancas{ --green:#22c55e; }   /* verde (padrão) */
+.whats-mini.whats { --green:#16a34a; }   /* verde mais escuro */
+
+/* badge “Aberto/Grátis” no subtítulo */
+.badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  height: 22px; padding: 0 8px; border-radius: 999px; font-weight:700; font-size:12px;
+}
+.badge.open{ color:#16a34a; background:#16a34a1a; }
+.badge.closed{ color:#ef4444; background:#ef44441a; }
+
+
+/* ========================================================================
+   TEMA CLARO E ESCURO (dark mode)
+   ======================================================================== */
+/* ===== THEME SYSTEM — claro/escuro por data-theme no <html> ===== */
+
+/* transições suaves */
+html, body, .card, .chip, #cartBar { transition: background-color .2s ease, color .2s ease, box-shadow .2s ease; }
+
+/* TEMA CLARO (padrão) — já está aplicado pelas variáveis atuais, reforçamos aqui */
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --muted-2: #9aa3af;
+  --brand: #6c5ce7;
+  --chip-bg: #efe9ff;
+  --chip-fg: #1f1147;
+  --shadow-1: 0 2px 8px rgba(14, 23, 38, .06);
+  --shadow-2: 0 3px 10px rgba(14, 23, 38, .08);
+}
+
+/* TEMA ESCURO — basta por data-theme="dark" no <html> */
+html[data-theme="dark"]{
+  --bg: #0e1217;            /* fundo da página */
+  --card: #151a21;          /* cards */
+  --text: #e6e9ee;          /* texto principal */
+  --muted: #a8b0bd;         /* texto secundário */
+  --muted-2: #8b94a3;       /* meta */
+  --brand: #9b8cff;         /* acento */
+  --chip-bg: #231f36;       /* chip inativo */
+  --chip-fg: #e6e9ee;
+  --shadow-1: 0 2px 10px rgba(0,0,0,.45);
+  --shadow-2: 0 6px 18px rgba(0,0,0,.55);
+}
+
+/* pequenos ajustes de contraste no escuro */
+html[data-theme="dark"] body{ background: var(--bg); color: var(--text); }
+html[data-theme="dark"] .card{ box-shadow: var(--shadow-1); }
+html[data-theme="dark"] .chip{ background: var(--chip-bg); color: var(--chip-fg); }
+html[data-theme="dark"] .chip.active{ color:#fff; } /* gradiente ativo continua bom no escuro */
+html[data-theme="dark"] input, 
+html[data-theme="dark"] .qty-input,
+html[data-theme="dark"] .qty-btn,
+html[data-theme="dark"] #cartBar{
+  background: var(--card);
+  border-color: #2a3340 !important;
+  color: var(--text);
+  box-shadow: var(--shadow-1);
+}
+
+/* pílulas do topo (Tema / Bancas / Whats) preservam cor no escuro */
+html[data-theme="dark"] .whats-mini{ color:#fff; filter: saturate(1.05); }
+
+/* ========================================================================
+   FIM
+   ======================================================================== */
+

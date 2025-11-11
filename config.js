@@ -5,5 +5,13 @@
   adminWhats: "5565996245361",
   theme: "dark",
   checkout: { note: "Obrigado por comprar dos produtores locais!" },
-  dataSource: { type: "json", jsonUrl: "products.json" }
+  dataSource: { type: "json", jsonUrl: "products.json" },
+  assets: {
+    productsBase: "images/produtos",
+    productExtensions: ["webp", "jpg", "jpeg", "png"],
+    producersBase: "images/produtores",
+    producerExtensions: ["webp", "jpg", "jpeg", "png"],
+    coversBase: "images/produtores/capas",
+    coverExtensions: ["webp", "jpg", "jpeg", "png"]
+  }
 };
