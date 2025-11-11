@@ -1,8 +1,5 @@
 ﻿/* ========================================================================
    FEIRA DIGITAL — CSS LIMPO E ESTÁVEL
-   - Layout centralizado com largura fixa
-   - Lista vertical (1 card por linha) com imagem à esquerda
-   - Sem regras duplicadas e sem media queries conflitantes
    ======================================================================== */
 
 /* ---------- Variáveis de tema ---------- */
@@ -15,271 +12,287 @@
   --brand: #6c5ce7;
   --chip-bg: #efe9ff;
   --chip-fg: #1f1147;
-  --shadow-1: 0 2px 8px rgba(14, 23, 38, .06);
-  --shadow-2: 0 3px 10px rgba(14, 23, 38, .08);
+  --shadow-1: 0 2px 8px rgba(14,23,38,.06);
+  --shadow-2: 0 3px 10px rgba(14,23,38,.08);
   --radius: 16px;
 }
 
-/* ---------- Reset leve ---------- */
-*{ box-sizing: border-box; }
-html,body{ height:100%; }
+*{ box-sizing:border-box }
+html,body{ height:100% }
 body{
   margin:0;
-  font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
-  color: var(--text);
-  background: var(--bg);
+  font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+  color:var(--text);
+  background:var(--bg);
 }
 
 /* ========================================================================
    LAYOUT CENTRAL
    ======================================================================== */
-.main-container{
-  width: 100%;
-  max-width: 1120px;   /* largura máxima do site */
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.topbar, .hero, .search-wrap, .chips, .cards{
-  max-width: 1000px; /* largura interna */
-  margin-left: auto;
-  margin-right: auto;
-}
+.main-container{ width:100%; max-width:1120px; margin:0 auto; padding:0 24px }
+.topbar,.hero,.search-wrap,.chips,.cards{ max-width:1000px; margin:0 auto }
 
 /* ========================================================================
-   HERO / CABEÇALHO DA BANCA
+   TOPO / MARCA / PÍLULAS
    ======================================================================== */
-.hero{ padding: 16px 0 8px; }
-.hero-inner{ display:flex; align-items:center; gap:12px; }
-.hero .title{ font-size: 2rem; font-weight: 900; margin:0; }
-.hero .subtitle{ color: var(--muted); margin: 4px 0 0; }
+.topbar{ display:flex; align-items:center; justify-content:space-between; padding:16px 0 }
+.brand{ display:flex; align-items:center; gap:12px }
+.avatar{ width:40px; height:40px; border-radius:50%; background:#11131a; color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:800; box-shadow:0 2px 6px rgba(0,0,0,.15) }
 
-/* ========================================================================
-   BUSCA E CATEGORIAS
-   ======================================================================== */
-.search-wrap{ padding: 8px 0 12px; }
-.search-wrap input[type="search"],
-.search-wrap input[type="text"]{
-  width: 100%;
-  height: 44px;
-  border-radius: 999px;
-  background: var(--card);
-  border: 1px solid #e7eaf0;
-  padding: 0 16px;
-  outline: none;
-  color: var(--text);
-  box-shadow: var(--shadow-1);
-}
-
-.chips{
-  display:flex; flex-wrap:wrap; gap:10px;
-  padding: 10px 0 16px;
-}
-.chip{
-  border: 0; padding: 8px 14px; border-radius: 999px;
-  cursor: pointer; font-weight: 700; background: var(--card); color: var(--text);
-  box-shadow: var(--shadow-1);
-}
-.chip.active{
-  background: linear-gradient(90deg, #b46cff, #ff5fd2);
-  color: #fff;
-}
-
-/* ========================================================================
-   LISTA DE PRODUTOS — 1 POR LINHA
-   ======================================================================== */
-.cards{
-  display: grid;
-  grid-template-columns: 1fr;   /* sempre uma coluna */
-  gap: 18px;
-  padding-bottom: 32px;
-}
-
-/* Card horizontal com thumb à esquerda */
-.card{
-  display: grid;
-  grid-template-columns: 200px 1fr;   /* imagem | conteúdo */
-  align-items: center;
-  gap: 20px;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-1);
-  padding: 18px 20px;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.card:hover{ transform: translateY(-2px); box-shadow: var(--shadow-2); }
-
-/* Miniatura */
-.card .thumb{
-  width: 200px;
-  height: 200px;
-  background-color: #fff;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  border-radius: var(--radius);
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  overflow: hidden;
-}
-
-/* Conteúdo à direita */
-.card .info{ display:flex; flex-direction:column; gap:6px; }
-.card .title{ font-size: 1.22rem; font-weight: 800; margin:0; }
-.card .desc{ color: var(--muted); margin:0; }
-.card .meta{ color: var(--muted-2); font-size:.95rem; }
-.card .price{ font-size:1.1rem; font-weight:800; color: var(--text); margin-top:6px; }
-
-/* Controles de quantidade compactos */
-.qty{ display:inline-flex; align-items:center; gap:6px; }
-.qty-btn, .btn{
-  border:1px solid #e7eaf0; background:#fff; height:32px; min-width:32px;
-  border-radius: 10px; display:inline-flex; align-items:center; justify-content:center;
-  cursor:pointer;
-}
-.qty-input{
-  width:46px; height:32px; text-align:center; border:1px solid #e7eaf0;
-  border-radius: 10px; background:#fff; color:var(--text);
-}
-
-/* ========================================================================
-   RESPONSIVO — reduz proporcionalmente
-   ======================================================================== */
-@media (max-width: 1024px){
-  .main-container{ max-width: 980px; }
-  .card{ grid-template-columns: 170px 1fr; gap:16px; padding:16px; }
-  .card .thumb{ width:170px; height:170px; }
-}
-@media (max-width: 720px){
-  .main-container{ max-width: 640px; padding: 0 16px; }
-  .hero .title{ font-size: 1.6rem; }
-  .card{ grid-template-columns: 140px 1fr; gap:14px; padding:14px; }
-  .card .thumb{ width:140px; height:140px; }
-}
-@media (max-width: 420px){
-  .card{ grid-template-columns: 110px 1fr; gap:12px; padding:12px; }
-  .card .thumb{ width:110px; height:110px; }
-}
-
-/* ========================================================================
-   BARRA DO CARRINHO / TOAST (básico)
-   ======================================================================== */
-#cartBar{
-  position: sticky; bottom: 12px; left:0; right:0; margin: 12px auto 0;
-  max-width: 1000px; display:flex; align-items:center; justify-content:space-between;
-  gap: 12px; padding: 10px 14px; background:#fff; border-radius: 999px;
-  box-shadow: var(--shadow-2);
-}
-#cartBar.hidden{ display:none; }
-
-#toast{
-  position: fixed; bottom: 18px; left:50%; transform: translateX(-50%);
-  background:#111; color:#fff; padding:10px 14px; border-radius: 10px;
-  opacity:0; pointer-events:none; transition: opacity .2s ease;
-}
-#toast.show{ opacity:1; }
-
-/* ========================================================================
-   FIM
-   ======================================================================== */
-
-   /* ===== TOPO / MENU — restaura cores das pílulas ===== */
-.topbar{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 16px 0;
-}
-.brand{ display:flex; align-items:center; gap:12px; }
-.avatar{
-  width:40px; height:40px; border-radius:50%;
-  background:#11131a; color:#fff; display:flex; align-items:center; justify-content:center;
-  font-weight:800; box-shadow: 0 2px 6px rgba(0,0,0,.15);
-}
-
-/* pílulas (Tema, Bancas, Whats) */
-.whats-mini, .topbar .primary{
+.whats-mini,.topbar .primary{
   --green:#22c55e;
   display:inline-flex; align-items:center; justify-content:center;
-  height: 34px; padding: 0 14px; border-radius: 999px;
-  border: 0; text-decoration:none; cursor:pointer;
-  background: var(--green); color:#fff; font-weight:800;
-  box-shadow: 0 2px 8px rgba(34,197,94,.35);
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  height:34px; padding:0 14px; border-radius:999px; border:0; text-decoration:none; cursor:pointer;
+  background:var(--green); color:#fff; font-weight:800; box-shadow:0 2px 8px rgba(34,197,94,.35);
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease
 }
-.whats-mini:hover, .topbar .primary:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(34,197,94,.45);
-  filter: saturate(1.1);
-}
-.whats-mini:active{ transform: translateY(0); }
+.whats-mini:hover,.topbar .primary:hover{ transform:translateY(-1px); box-shadow:0 4px 12px rgba(34,197,94,.45); filter:saturate(1.1) }
+.whats-mini.theme { --green:#8b5cf6 }
+.whats-mini.bancas{ --green:#22c55e }
+.whats-mini.whats { --green:#16a34a }
 
-/* variações úteis (se quiser diferenciar Tema/Bancas/Whats) */
-.whats-mini.theme { --green:#8b5cf6; }   /* lilás */
-.whats-mini.bancas{ --green:#22c55e; }   /* verde (padrão) */
-.whats-mini.whats { --green:#16a34a; }   /* verde mais escuro */
-
-/* badge “Aberto/Grátis” no subtítulo */
-.badge{
-  display:inline-flex; align-items:center; justify-content:center;
-  height: 22px; padding: 0 8px; border-radius: 999px; font-weight:700; font-size:12px;
-}
-.badge.open{ color:#16a34a; background:#16a34a1a; }
-.badge.closed{ color:#ef4444; background:#ef44441a; }
-
+.badge{ display:inline-flex; align-items:center; justify-content:center; height:22px; padding:0 8px;
+  border-radius:999px; font-weight:700; font-size:12px }
+.badge.open{ color:#16a34a; background:#16a34a1a }
+.badge.closed{ color:#ef4444; background:#ef44441a }
 
 /* ========================================================================
-   TEMA CLARO E ESCURO (dark mode)
+   HERO / TÍTULO DA BANCA
    ======================================================================== */
-/* ===== THEME SYSTEM — claro/escuro por data-theme no <html> ===== */
+.hero{ padding:16px 0 8px }
+.hero-inner{ display:flex; align-items:center; gap:12px }
+.hero .title{ font-size:2rem; font-weight:900; margin:0 }
+.hero .subtitle{ color:var(--muted); margin:4px 0 0 }
 
-/* transições suaves */
-html, body, .card, .chip, #cartBar { transition: background-color .2s ease, color .2s ease, box-shadow .2s ease; }
+/* ========================================================================
+   BUSCA + CATEGORIAS
+   ======================================================================== */
+.search-wrap{ padding:8px 0 12px }
+.search-wrap input[type="search"], .search-wrap input[type="text"]{
+  width:100%; height:44px; border-radius:999px; background:var(--card); border:1px solid #e7eaf0;
+  padding:0 16px; outline:none; color:var(--text); box-shadow:var(--shadow-1)
+}
+.chips{ display:flex; flex-wrap:wrap; gap:10px; padding:10px 0 16px }
+.chip{ border:0; padding:8px 14px; border-radius:999px; cursor:pointer; font-weight:700; background:var(--card); color:var(--text); box-shadow:var(--shadow-1) }
+.chip.active{ background:linear-gradient(90deg,#b46cff,#ff5fd2); color:#fff }
 
-/* TEMA CLARO (padrão) — já está aplicado pelas variáveis atuais, reforçamos aqui */
-:root{
-  --bg: #f5f7fb;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted: #6b7280;
-  --muted-2: #9aa3af;
-  --brand: #6c5ce7;
-  --chip-bg: #efe9ff;
-  --chip-fg: #1f1147;
-  --shadow-1: 0 2px 8px rgba(14, 23, 38, .06);
-  --shadow-2: 0 3px 10px rgba(14, 23, 38, .08);
+/* ========================================================================
+   LISTA DE PRODUTOS — 1 por linha (thumb à esquerda)
+   ======================================================================== */
+.cards{ display:grid; grid-template-columns:1fr; gap:18px; padding-bottom:32px }
+
+.card{
+  display:grid; grid-template-columns:200px 1fr; align-items:center; gap:20px;
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow-1);
+  padding:18px 20px; transition:transform .2s ease, box-shadow .2s ease
+}
+.card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-2) }
+
+.card .thumb{
+  width:200px; height:200px; background:#fff;
+  background-size:contain!important; background-repeat:no-repeat!important; background-position:center center!important;
+  border-radius:var(--radius); box-shadow:0 1px 4px rgba(0,0,0,.08); overflow:hidden
+}
+.card .info{ display:flex; flex-direction:column; gap:6px }
+.card .title{ font-size:1.22rem; font-weight:800; margin:0 }
+.card .desc{ color:var(--muted); margin:0 }
+.card .meta{ color:var(--muted-2); font-size:.95rem }
+.card .price{ font-size:1.1rem; font-weight:800; color:var(--text); margin-top:6px }
+
+.qty{ display:inline-flex; align-items:center; gap:6px }
+.qty-btn,.btn{ border:1px solid #e7eaf0; background:#fff; height:32px; min-width:32px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer }
+.qty-input{ width:46px; height:32px; text-align:center; border:1px solid #e7eaf0; border-radius:10px; background:#fff; color:var(--text) }
+
+/* ========================================================================
+   CARRINHO — barra e modal
+   ======================================================================== */
+/* barra fixa (quando tem itens) */
+#cartBar{
+  position:sticky; bottom:16px; left:0; right:0; margin:12px auto 0;
+  max-width:1000px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px 14px; background:var(--card); color:var(--text);
+  border:1px solid rgba(0,0,0,.06); border-radius:999px; box-shadow:var(--shadow-2); z-index:50
+}
+#cartBar.hidden{ display:none }
+#cartBar .summary{ display:flex; align-items:center; gap:10px; font-weight:800 }
+#openCart{
+  height:40px; padding:0 16px; border-radius:999px; border:0; cursor:pointer;
+  background:#22c55e; color:#fff; font-weight:800; box-shadow:0 4px 10px rgba(34,197,94,.35)
+}
+#openCart:hover{ filter:saturate(1.05); transform:translateY(-1px) }
+
+/* modal do carrinho (dialog) */
+#cartModal{
+  border:none; padding:0; width:min(720px,92vw); max-height:80vh;
+  background:var(--card); color:var(--text);
+  border-radius:18px; box-shadow:0 18px 40px rgba(0,0,0,.25); overflow:hidden
+}
+#cartModal::backdrop{ background:rgba(0,0,0,.55) }
+
+.cart-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.08); font-weight:900
+}
+.cart-close{
+  width:36px; height:36px; border-radius:10px; border:1px solid rgba(0,0,0,.08);
+  background:var(--card); color:var(--text); cursor:pointer
+}
+.cart-body{ padding:12px 16px; max-height:50vh; overflow:auto }
+.cart-footer{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:14px 16px; border-top:1px solid rgba(0,0,0,.08)
 }
 
-/* TEMA ESCURO — basta por data-theme="dark" no <html> */
+.cart-item{
+  display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:10px;
+  padding:8px 0; border-bottom:1px dashed rgba(0,0,0,.06)
+}
+.cart-name{ font-weight:700 }
+.cart-subtotal{ font-weight:800; white-space:nowrap }
+
+.cart-item .qty{ display:inline-flex; align-items:center; gap:6px }
+.cart-item .qty-input{
+  width:48px; height:32px; text-align:center; border:1px solid #e7eaf0; border-radius:10px; background:#fff; color:var(--text)
+}
+.cart-item [data-action="minus"], .cart-item [data-action="plus"]{
+  width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid #e7eaf0; border-radius:10px; background:#fff; color:var(--text); cursor:pointer
+}
+
+.cart-total{ font-size:1.05rem; font-weight:900 }
+#checkout{
+  height:44px; padding:0 18px; border-radius:12px; border:0; cursor:pointer;
+  background:#22c55e; color:#fff; font-weight:900; box-shadow:0 6px 14px rgba(34,197,94,.35)
+}
+#checkout:hover{ filter:saturate(1.08); transform:translateY(-1px) }
+
+/* ========================================================================
+   DARK MODE (data-theme="dark")
+   ======================================================================== */
+html,body,.card,.chip,#cartBar{ transition:background-color .2s ease, color .2s ease, box-shadow .2s ease }
+
 html[data-theme="dark"]{
-  --bg: #0e1217;            /* fundo da página */
-  --card: #151a21;          /* cards */
-  --text: #e6e9ee;          /* texto principal */
-  --muted: #a8b0bd;         /* texto secundário */
-  --muted-2: #8b94a3;       /* meta */
-  --brand: #9b8cff;         /* acento */
-  --chip-bg: #231f36;       /* chip inativo */
-  --chip-fg: #e6e9ee;
-  --shadow-1: 0 2px 10px rgba(0,0,0,.45);
-  --shadow-2: 0 6px 18px rgba(0,0,0,.55);
+  --bg:#0e1217; --card:#151a21; --text:#e6e9ee; --muted:#a8b0bd; --muted-2:#8b94a3; --brand:#9b8cff;
+  --chip-bg:#231f36; --chip-fg:#e6e9ee; --shadow-1:0 2px 10px rgba(0,0,0,.45); --shadow-2:0 6px 18px rgba(0,0,0,.55)
 }
-
-/* pequenos ajustes de contraste no escuro */
-html[data-theme="dark"] body{ background: var(--bg); color: var(--text); }
-html[data-theme="dark"] .card{ box-shadow: var(--shadow-1); }
-html[data-theme="dark"] .chip{ background: var(--chip-bg); color: var(--chip-fg); }
-html[data-theme="dark"] .chip.active{ color:#fff; } /* gradiente ativo continua bom no escuro */
+html[data-theme="dark"] body{ background:var(--bg); color:var(--text) }
+html[data-theme="dark"] .card{ box-shadow:var(--shadow-1) }
+html[data-theme="dark"] .chip{ background:var(--chip-bg); color:var(--chip-fg) }
+html[data-theme="dark"] .chip.active{ color:#fff }
 html[data-theme="dark"] input, 
 html[data-theme="dark"] .qty-input,
 html[data-theme="dark"] .qty-btn,
 html[data-theme="dark"] #cartBar{
-  background: var(--card);
-  border-color: #2a3340 !important;
-  color: var(--text);
-  box-shadow: var(--shadow-1);
+  background:var(--card); border-color:#2a3340!important; color:var(--text); box-shadow:var(--shadow-1)
 }
-
-/* pílulas do topo (Tema / Bancas / Whats) preservam cor no escuro */
-html[data-theme="dark"] .whats-mini{ color:#fff; filter: saturate(1.05); }
+html[data-theme="dark"] #cartModal{ box-shadow:0 18px 40px rgba(0,0,0,.6) }
+html[data-theme="dark"] .cart-header, html[data-theme="dark"] .cart-footer{ border-color:#2a3340 }
+html[data-theme="dark"] .cart-item{ border-color:#2a3340 }
+html[data-theme="dark"] .cart-item .qty-input,
+html[data-theme="dark"] .cart-item [data-action="minus"],
+html[data-theme="dark"] .cart-item [data-action="plus"],
+html[data-theme="dark"] .cart-close{ background:var(--card); color:var(--text); border-color:#2a3340 }
+html[data-theme="dark"] .whats-mini{ color:#fff; filter:saturate(1.05) }
 
 /* ========================================================================
-   FIM
+   RESPONSIVO
+   ======================================================================== */
+@media (max-width:1024px){
+  .main-container{ max-width:980px }
+  .card{ grid-template-columns:170px 1fr; gap:16px; padding:16px }
+  .card .thumb{ width:170px; height:170px }
+}
+@media (max-width:720px){
+  .main-container{ max-width:640px; padding:0 16px }
+  .hero .title{ font-size:1.6rem }
+  .card{ grid-template-columns:140px 1fr; gap:14px; padding:14px }
+  .card .thumb{ width:140px; height:140px }
+}
+@media (max-width:480px){
+  .card{ grid-template-columns:110px 1fr; gap:12px; padding:12px }
+  .card .thumb{ width:110px; height:110px }
+  .cart-item{ grid-template-columns:1fr auto }  /* subtotal desce no mobile */
+  .cart-subtotal{ justify-self:end }
+}
+
+
+/* ==== AJUSTE: respiro interno no modal do carrinho ==== */
+#cartModal {
+  padding: 16px 20px; /* adiciona espaçamento interno */
+}
+
+#cartModal .cart-header {
+  padding: 18px 20px;
+}
+
+#cartModal .cart-body {
+  padding: 16px 20px;
+}
+
+#cartModal .cart-footer {
+  padding: 18px 20px;
+}
+
+/* dark mode mantém o mesmo espaçamento */
+html[data-theme="dark"] #cartModal .cart-header,
+html[data-theme="dark"] #cartModal .cart-body,
+html[data-theme="dark"] #cartModal .cart-footer {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ========================================================================
+   uma banca dem baixo da outra na pagina index.html  
    ======================================================================== */
 
+   /* === Página index: bancas em coluna centralizada === */
+.bancas-list, /* se for o id ou classe do container das bancas */
+.producer-list, /* ou o nome usado no seu HTML */
+.cards.bancas {  /* fallback se o mesmo grid for reutilizado */
+  display: flex;
+  flex-direction: column;   /* empilha verticalmente */
+  align-items: center;      /* centraliza no meio da tela */
+  gap: 20px;                /* espaço entre as bancas */
+  max-width: 700px;         /* largura máxima agradável */
+  margin: 0 auto;           /* centraliza no viewport */
+  padding: 20px 0;
+}
+
+/* garante que cada banca ocupe 100% da largura disponível */
+.banca-card, .producer-card {
+  width: 100%;
+  max-width: 680px;
+}
+
+/* ===== Ajuste final: bancas centralizadas e alinhadas com o topo ===== */
+#grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* uma coluna */
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;            /* mesmo limite da busca e do cabeçalho */
+  margin: 0 auto;               /* centraliza */
+  padding: 0 24px 40px;         /* mesmo recuo lateral do topo */
+}
+
+/* garante que cada card ocupe toda a largura do grid */
+#grid .producer-card {
+  width: 100%;
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: var(--shadow-1);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 3) link "Ver banca" com peso e cor coerentes */
+#grid .producer-card a{
+  font-weight: 700;
+  color: #6c5ce7;                      /* acento no claro */
+  text-decoration: none;
+}
+html[data-theme="dark"] #grid .producer-card a{ color:#f5f4f7; }
+#grid .producer-card a:hover{ text-decoration: underline; }
